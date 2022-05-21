@@ -4,8 +4,6 @@ __all__ = ['IPFS']
 
 # Cell
 import requests
-import random
-from typing import Union
 import json
 from fastcore.all import *
 

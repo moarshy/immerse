@@ -96,42 +96,6 @@ nb_path: "nbs\00_httpapi.ipynb"
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#             print(params)</span>
-<span class="c1">#             headers = {</span>
-<span class="c1">#                     &#39;Content-Type&#39;: &#39;application/x-directory&#39;,</span>
-<span class="c1">#                     &#39;Content-Disposition&#39;: &#39;form-data&#39;</span>
-<span class="c1">#             }</span>
-
-<span class="c1">#             files = {str(f.name): open(str(f), &#39;rb&#39;) for f in Path(filepath).ls()}</span>
-
-<span class="c1">#             response = requests.post(&#39;http://127.0.0.1:5001/api/v0/add&#39;, </span>
-<span class="c1">#                                      headers=headers, </span>
-<span class="c1">#                                      params=params,</span>
-<span class="c1">#                                      files=files)</span>
-
-<span class="c1">#             if response.status_code == 200:</span>
-<span class="c1">#                 print(&quot;Added&quot;, filepath, &quot;to IPFS - &quot;, &quot;Response&quot;, response.status_code)</span>
-<span class="c1">#                 return response, json.loads(response.text.split(&#39;\n&#39;)[1])</span>
-
-<span class="c1">#             else:</span>
-<span class="c1">#                 print(response.status_code)</span>
-                 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="How-to-add-file-to-IPFS">How to add file to IPFS<a class="anchor-link" href="#How-to-add-file-to-IPFS"> </a></h2>
