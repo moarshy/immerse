@@ -2,7 +2,14 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"IPFS": "00_httpapi.ipynb"}
+index = {"get_coreurl": "00_httpapi.ipynb",
+         "add": "00_httpapi.ipynb",
+         "get": "00_httpapi.ipynb",
+         "cat": "00_httpapi.ipynb",
+         "get_peers": "00_httpapi.ipynb",
+         "find_dht_peer": "00_httpapi.ipynb",
+         "find_value_provider": "00_httpapi.ipynb",
+         "get_dht_value": "00_httpapi.ipynb"}
 
 modules = ["httpapi.py"]
 
