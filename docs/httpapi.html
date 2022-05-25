@@ -47,7 +47,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_coreurl" class="doc_header"><code>get_coreurl</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_coreurl</code>(<strong><code>local</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
+<h4 id="get_coreurl" class="doc_header"><code>get_coreurl</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_coreurl</code>(<strong><code>local</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Set the core url for convenience</p>
 <table>
@@ -102,9 +102,86 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="add" class="doc_header"><code>add</code><a href="https://github.com/fastai/fastcore/tree/master/fastcore/basics.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add</code>(<strong><code>a</code></strong>, <strong><code>b</code></strong>=<em><code>&lt;object object at 0x0000022D5E93D0E0&gt;</code></em>)</p>
+<h4 id="add_items" class="doc_header"><code>add_items</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L23" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_items</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>filepath</code></strong>:<code>str</code>, <strong><code>wrap_with_directory</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>recursive</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>chunker</code></strong>:<code>str</code>=<em><code>'size-262144'</code></em>, <strong><code>pin</code></strong>:<code>str</code>=<em><code>'true'</code></em>, <strong><code>hash_</code></strong>:<code>str</code>=<em><code>'sha2-256'</code></em>, <strong><code>progress</code></strong>:<code>str</code>=<em><code>'true'</code></em>, <strong><code>silent</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>cid_version</code></strong>:<code>int</code>=<em><code>0</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
-<p>Same as <code>operator.add</code>, or returns partial if 1 arg</p>
+<p>add file/directory to ipfs</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>coreurl</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>Core URL to use</td>
+</tr>
+<tr>
+<td><strong><code>filepath</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>Path to the file/directory to be added to IPFS</td>
+</tr>
+<tr>
+<td><strong><code>wrap_with_directory</code></strong></td>
+<td><code>str</code></td>
+<td><code>false</code></td>
+<td>True if path is a directory</td>
+</tr>
+<tr>
+<td><strong><code>recursive</code></strong></td>
+<td><code>str</code></td>
+<td><code>false</code></td>
+<td>Add directory paths recursively</td>
+</tr>
+<tr>
+<td><strong><code>chunker</code></strong></td>
+<td><code>str</code></td>
+<td><code>size-262144</code></td>
+<td>Chunking algorithm, size-[bytes], rabin-[min]-[avg]-[max] or buzhash</td>
+</tr>
+<tr>
+<td><strong><code>pin</code></strong></td>
+<td><code>str</code></td>
+<td><code>true</code></td>
+<td>Pin this object when adding</td>
+</tr>
+<tr>
+<td><strong><code>hash_</code></strong></td>
+<td><code>str</code></td>
+<td><code>sha2-256</code></td>
+<td>Hash function to use. Implies CIDv1 if not sha2-256</td>
+</tr>
+<tr>
+<td><strong><code>progress</code></strong></td>
+<td><code>str</code></td>
+<td><code>true</code></td>
+<td>Stream progress data</td>
+</tr>
+<tr>
+<td><strong><code>silent</code></strong></td>
+<td><code>str</code></td>
+<td><code>false</code></td>
+<td>Write no output</td>
+</tr>
+<tr>
+<td><strong><code>cid_version</code></strong></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>CID version</td>
+</tr>
+<tr>
+<td><strong><code>kwargs</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -132,10 +209,10 @@ nb_path: "nbs\00_httpapi.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Using-local-IPFS-Node">Using local IPFS Node<a class="anchor-link" href="#Using-local-IPFS-Node"> </a></h3><p>Note: Full list of available <code>params</code> on <a href="/immerse/httpapi.html#add"><code>add</code></a> function can be found <a href="https://docs.ipfs.io/reference/http/api/#api-v0-add">here</a></p>
+<h3 id="Using-local-IPFS-Node">Using local IPFS Node<a class="anchor-link" href="#Using-local-IPFS-Node"> </a></h3><p>Note: Full list of available <code>params</code> on <code>add</code> function can be found <a href="https://docs.ipfs.io/reference/http/api/#api-v0-add">here</a></p>
 <ol>
 <li>Choose the core url using <a href="/immerse/httpapi.html#get_coreurl"><code>get_coreurl</code></a></li>
-<li>Call the <a href="/immerse/httpapi.html#add"><code>add</code></a> function with the <code>coreurl</code> and <code>path</code></li>
+<li>Call the <code>add</code> function with the <code>coreurl</code> and <code>path</code></li>
 <li>Check the status of the <code>response</code></li>
 <li>Status 200 indicates the request has been posted (check what other status codes mean <a href="https://docs.ipfs.io/reference/http/api/#http-status-codes">here</a>)</li>
 <li>You can check the file on either <code>ipfs.io</code> or <code>infura.io</code></li>
@@ -184,7 +261,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;../README.md&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add_items</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;../README.md&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -239,8 +316,8 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;Name&#39;: &#39;README.md&#39;,
- &#39;Hash&#39;: &#39;QmXPhkw5QTpP4eqNVfAudVDj8waZYTBb4bToHApvRWwXB5&#39;,
- &#39;Size&#39;: &#39;1176&#39;}</pre>
+ &#39;Hash&#39;: &#39;QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B&#39;,
+ &#39;Size&#39;: &#39;1190&#39;}</pre>
 </div>
 
 </div>
@@ -298,7 +375,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;../README.md&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add_items</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;../README.md&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -345,8 +422,8 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;Name&#39;: &#39;README.md&#39;,
- &#39;Hash&#39;: &#39;QmXPhkw5QTpP4eqNVfAudVDj8waZYTBb4bToHApvRWwXB5&#39;,
- &#39;Size&#39;: &#39;1176&#39;}</pre>
+ &#39;Hash&#39;: &#39;QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B&#39;,
+ &#39;Size&#39;: &#39;1190&#39;}</pre>
 </div>
 
 </div>
@@ -385,7 +462,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;../test&quot;</span><span class="p">,</span> <span class="n">wrap_with_directory</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add_items</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;../test&quot;</span><span class="p">,</span> <span class="n">wrap_with_directory</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -416,7 +493,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">each</span><span class="p">)</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">each</span><span class="p">)</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]]</span>
 </pre></div>
 
     </div>
@@ -431,211 +508,13 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 262144},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 524288},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 786432},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 1048576},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 1310720},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 1572864},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 1835008},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 2097152},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 2359296},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 2621440},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 2883584},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 3145728},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 3407872},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 3670016},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 3932160},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 4194304},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 4456448},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;, &#39;Bytes&#39;: 4464194},
- {&#39;Name&#39;: &#39;HEALTHCARE_ANALYTICS_MADE_SIMPLE.pdf&#39;,
-  &#39;Hash&#39;: &#39;QmSYrnijhvmvyRmNwGwj1TCp39W21uC8K3kqN3RdkUyJ5t&#39;,
-  &#39;Size&#39;: &#39;4465314&#39;},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 262144},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 524288},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 786432},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 1048576},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 1310720},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 1572864},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 1835008},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 2097152},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 2359296},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 2621440},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 2883584},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 3145728},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 3407872},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 3670016},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 3932160},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 4194304},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 4456448},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 4718592},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 4980736},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 5242880},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 5505024},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 5767168},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 6029312},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 6291456},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 6553600},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 6815744},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 7077888},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 7340032},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 7602176},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 7864320},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 8126464},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 8388608},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 8650752},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 8912896},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 9175040},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 9437184},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 9699328},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 9961472},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 10223616},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 10485760},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 10747904},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 11010048},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 11272192},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 11534336},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 11796480},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 12058624},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 12320768},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 12582912},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 12845056},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 13107200},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 13369344},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 13631488},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 13893632},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 14155776},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 14417920},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 14680064},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 14942208},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 15204352},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 15466496},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 15728640},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 15990784},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 16252928},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 16515072},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 16777216},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 17039360},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 17301504},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 17563648},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 17825792},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 18087936},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 18350080},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 18612224},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 18874368},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 19136512},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 19398656},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 19660800},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 19922944},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 20185088},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 20447232},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 20709376},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 20971520},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 21233664},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 21495808},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 21757952},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 22020096},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 22282240},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 22544384},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 22806528},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 23068672},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Bytes&#39;: 23137283},
- {&#39;Name&#39;: &#39;MACHINE_LEARNING_FOR_ALGORITHMIC_TRADING_SECOND_EDITION.pdf&#39;,
-  &#39;Hash&#39;: &#39;QmP2ZvQKrjvmNBWRMboFYzTWKSA2RR2yecoEtkS9HkdqpX&#39;,
-  &#39;Size&#39;: &#39;23142811&#39;},
+<pre>[{&#39;Name&#39;: &#39;test.txt&#39;, &#39;Bytes&#39;: 24},
+ {&#39;Name&#39;: &#39;test.txt&#39;,
+  &#39;Hash&#39;: &#39;QmTT8vwdbnP9Ls8bSY1LMyW4a8bEwTYZa5izEoJMBtTPfb&#39;,
+  &#39;Size&#39;: &#39;32&#39;},
  {&#39;Name&#39;: &#39;&#39;,
-  &#39;Hash&#39;: &#39;QmWVqchXwyGsrwx1L8c1EYK4Gutv9hykt4tiyfbxcfi4JY&#39;,
-  &#39;Size&#39;: &#39;27608314&#39;}]</pre>
+  &#39;Hash&#39;: &#39;QmbE8H8GsHVm7Nd8vrkxdZiDdLersvvYy4ZheFAmqSRSTC&#39;,
+  &#39;Size&#39;: &#39;27608396&#39;}]</pre>
 </div>
 
 </div>
@@ -678,7 +557,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get" class="doc_header"><code>get</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L71" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>output</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="get_items" class="doc_header"><code>get_items</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L72" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_items</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>output</code></strong>:<code>str</code>=<em><code>''</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Download IPFS objects</p>
 <table>
@@ -705,7 +584,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 <tr>
 <td><strong><code>output</code></strong></td>
 <td><code>str</code></td>
-<td></td>
+<td><code>""</code></td>
 <td>The path where the output should be stored</td>
 </tr>
 <tr>
@@ -738,7 +617,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cat" class="doc_header"><code>cat</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L89" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cat</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>)</p>
+<h4 id="cat" class="doc_header"><code>cat</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L90" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cat</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>offset</code></strong>:<code>int</code>, <strong><code>length</code></strong>:<code>int</code>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Show IPFS object data</p>
 <table>
@@ -774,6 +653,12 @@ nb_path: "nbs\00_httpapi.ipynb"
 <td></td>
 <td>Maximum number of bytes to read</td>
 </tr>
+<tr>
+<td><strong><code>kwargs</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
 </tbody>
 </table>
 
@@ -801,7 +686,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cid</span><span class="o">=</span><span class="s1">&#39;QmXPhkw5QTpP4eqNVfAudVDj8waZYTBb4bToHApvRWwXB5&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;test.txt&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">get_items</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cid</span><span class="o">=</span><span class="s1">&#39;QmXPhkw5QTpP4eqNVfAudVDj8waZYTBb4bToHApvRWwXB5&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -818,7 +703,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">500</span><span class="p">:</span><span class="mi">800</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)[</span><span class="mi">500</span><span class="p">:</span><span class="mi">700</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -833,7 +718,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>b&#39;\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00# Welcome to Immerse by Algovera\r\n&gt; A python library by Algovera to interact with IPFS and IPFS ecosystem such as the common pinning services\r\n\r\n\r\n## What is Immerse?\r\n\r\nImmerse is a python library by Algovera to interact with IPFS and IPFS ecosystem such as the common pinning services. &#39;</pre>
+<pre>&#39;\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00# Welcome to Immerse by Algovera\r\n&gt; A python library by Algovera to interact with IPFS and IPFS ecosystem such as the common pinning services\r\n\r\n\r\n## What is Immerse?\r\n\r\nImmerse is a pytho&#39;</pre>
 </div>
 
 </div>
@@ -861,7 +746,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_peers" class="doc_header"><code>get_peers</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L105" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_peers</code>(<strong><code>coreurl</code></strong>, <strong><code>verbose</code></strong>=<em><code>'true'</code></em>, <strong><code>streams</code></strong>=<em><code>'false'</code></em>, <strong><code>latency</code></strong>=<em><code>'false'</code></em>, <strong><code>direction</code></strong>=<em><code>'false'</code></em>)</p>
+<h4 id="get_peers" class="doc_header"><code>get_peers</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L108" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_peers</code>(<strong><code>coreurl</code></strong>, <strong><code>verbose</code></strong>=<em><code>'true'</code></em>, <strong><code>streams</code></strong>=<em><code>'false'</code></em>, <strong><code>latency</code></strong>=<em><code>'false'</code></em>, <strong><code>direction</code></strong>=<em><code>'false'</code></em>)</p>
 </blockquote>
 <p>List peers with open connections.</p>
 <table>
@@ -923,6 +808,12 @@ nb_path: "nbs\00_httpapi.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Getting-peers">Getting peers<a class="anchor-link" href="#Getting-peers"> </a></h3>
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -962,9 +853,9 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Addr&#39;: &#39;/ip4/104.131.131.82/udp/4001/quic&#39;,
- &#39;Peer&#39;: &#39;QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ&#39;,
- &#39;Latency&#39;: &#39;195.2369ms&#39;,
+<pre>{&#39;Addr&#39;: &#39;/ip4/1.237.18.217/udp/4001/quic&#39;,
+ &#39;Peer&#39;: &#39;12D3KooWKKETz8eDfu1oQHDvet9qCErV45PXZEQjnQa9xR8GjjaC&#39;,
+ &#39;Latency&#39;: &#39;238.007942ms&#39;,
  &#39;Muxer&#39;: &#39;&#39;,
  &#39;Direction&#39;: 2,
  &#39;Streams&#39;: [{&#39;Protocol&#39;: &#39;/ipfs/kad/1.0.0&#39;}]}</pre>
@@ -995,7 +886,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="find_dht_peer" class="doc_header"><code>find_dht_peer</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L123" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>find_dht_peer</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
+<h4 id="find_dht_peer" class="doc_header"><code>find_dht_peer</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L126" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>find_dht_peer</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
 </blockquote>
 <p>Find the multiaddresses associated with a Peer ID.</p>
 <table>
@@ -1049,7 +940,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="find_value_provider" class="doc_header"><code>find_value_provider</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L136" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>find_value_provider</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
+<h4 id="find_value_provider" class="doc_header"><code>find_value_provider</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L139" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>find_value_provider</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
 </blockquote>
 <p>Find peers that can provide a specific value, given a key.</p>
 <table>
@@ -1103,7 +994,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_dht_value" class="doc_header"><code>get_dht_value</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L149" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dht_value</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
+<h4 id="get_dht_value" class="doc_header"><code>get_dht_value</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L152" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dht_value</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
 </blockquote>
 <p>Given a key, query the routing system for its best value.</p>
 <table>
@@ -1203,8 +1094,8 @@ nb_path: "nbs\00_httpapi.ipynb"
  &#39;Responses&#39;: [{&#39;ID&#39;: &#39;QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ&#39;,
    &#39;Addrs&#39;: [&#39;/ip4/104.131.131.82/tcp/4001&#39;,
     &#39;/ip4/104.131.131.82/udp/4001/quic&#39;,
-    &#39;/ip4/127.0.0.1/tcp/4001&#39;,
-    &#39;/ip4/127.0.0.1/udp/4001/quic&#39;]}],
+    &#39;/ip4/127.0.0.1/udp/4001/quic&#39;,
+    &#39;/ip4/127.0.0.1/tcp/4001&#39;]}],
  &#39;Type&#39;: 2}</pre>
 </div>
 
@@ -1222,6 +1113,13 @@ nb_path: "nbs\00_httpapi.ipynb"
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's see who can provide this <a href="https://ipfs.io/ipfs/Qme7ss3ARVgxv6rXqVPiikMJ8u2NLgmgszg13pYrDKEoiu">image</a></p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1229,7 +1127,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">find_value_provider</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmXPhkw5QTpP4eqNVfAudVDj8waZYTBb4bToHApvRWwXB5&#39;</span><span class="p">)</span> <span class="c1"># Need to find better example</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">find_value_provider</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;Qme7ss3ARVgxv6rXqVPiikMJ8u2NLgmgszg13pYrDKEoiu&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1263,7 +1161,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_response</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1">#Need to figure out what the table means</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_response</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -1303,38 +1201,38 @@ nb_path: "nbs\00_httpapi.ipynb"
   <tbody>
     <tr>
       <th>0</th>
-      <td>failed to find any peer in table</td>
       <td></td>
-      <td>None</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td></td>
-      <td>12D3KooWHJysLGLcgFKSCEJHVofAb6o5UKq6Sp4FX2UTUt...</td>
-      <td>None</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td></td>
-      <td>12D3KooWSioiWNKkuriCBvmYHyKSYkgQTzk5DFS87243cz...</td>
-      <td>None</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td></td>
-      <td>12D3KooWDt2yF819B2R1dGXX4sEqGQ14MXA8ePXjL8gf6f...</td>
+      <td>12D3KooWCcFF1uGDMsxw71KEuum3PV3mP2YqJ9YBxpMLCq...</td>
       <td>None</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>1</th>
       <td></td>
-      <td>QmWPPjodLkMeyxQjkCHAnJq5KhDuYhjyp9q2qwB7ZAhp1T</td>
+      <td>12D3KooWGgo5kFeFKczz5C4tzZn6bgsjEoaXnWSjZVvvFA...</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td></td>
+      <td>12D3KooWL2NZPgWazFkSCaz66FpEA2ELsEpweY83yKYEB1...</td>
+      <td>None</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>12D3KooWCx3mdN7WypCLXo86F72SmEtxnSaJ4K5F3XGw5G...</td>
       <td>None</td>
       <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td></td>
+      <td>12D3KooWRbLQD3w8bUAXtrdrBaCFFk3ZywBMoRdJrMeHLs...</td>
+      <td>None</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -1361,7 +1259,7 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">get_dht_value</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmXPhkw5QTpP4eqNVfAudVDj8waZYTBb4bToHApvRWwXB5&#39;</span><span class="p">)</span> <span class="c1"># What sort of key does it take?</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">get_dht_value</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;Qme7ss3ARVgxv6rXqVPiikMJ8u2NLgmgszg13pYrDKEoiu&#39;</span><span class="p">)</span> <span class="c1"># What sort of key does it take?</span>
 </pre></div>
 
     </div>
@@ -1394,6 +1292,471 @@ nb_path: "nbs\00_httpapi.ipynb"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;Message&#39;: &#39;invalid key&#39;, &#39;Code&#39;: 0, &#39;Type&#39;: &#39;error&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Block">Block<a class="anchor-link" href="#Block"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="block_get" class="doc_header"><code>block_get</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L166" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>block_get</code>(<strong><code>coreurl</code></strong>, <strong><code>arg</code></strong>:<code>str</code>)</p>
+</blockquote>
+<p>Get a raw IPFS block.</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>coreurl</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+<tr>
+<td><strong><code>arg</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>The base58 multihash of an existing block to get</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="block_put" class="doc_header"><code>block_put</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>block_put</code>(<strong><code>coreurl</code></strong>, <strong><code>filepath</code></strong>:<code>str</code>, <strong><code>mhtype</code></strong>:<code>str</code>=<em><code>'sha2-256'</code></em>, <strong><code>mhlen</code></strong>:<code>int</code>=<em><code>-1</code></em>, <strong><code>pin</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>Store input as an IPFS block.</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>coreurl</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+<tr>
+<td><strong><code>filepath</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>Path to file</td>
+</tr>
+<tr>
+<td><strong><code>mhtype</code></strong></td>
+<td><code>str</code></td>
+<td><code>sha2-256</code></td>
+<td>multihash hash function.</td>
+</tr>
+<tr>
+<td><strong><code>mhlen</code></strong></td>
+<td><code>int</code></td>
+<td><code>-1</code></td>
+<td>Multihash hash length</td>
+</tr>
+<tr>
+<td><strong><code>pin</code></strong></td>
+<td><code>str</code></td>
+<td><code>false</code></td>
+<td>pin added blocks recursively</td>
+</tr>
+<tr>
+<td><strong><code>kwargs</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="block_rm" class="doc_header"><code>block_rm</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L198" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>block_rm</code>(<strong><code>coreurl</code></strong>, <strong><code>arg</code></strong>:<code>str</code>, <strong><code>force</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>quiet</code></strong>:<code>str</code>=<em><code>'false'</code></em>)</p>
+</blockquote>
+<p>Remove IPFS block(s).</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>coreurl</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+<tr>
+<td><strong><code>arg</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>Bash58 encoded multihash of block(s) to remove</td>
+</tr>
+<tr>
+<td><strong><code>force</code></strong></td>
+<td><code>str</code></td>
+<td><code>false</code></td>
+<td>Ignore nonexistent blocks.</td>
+</tr>
+<tr>
+<td><strong><code>quiet</code></strong></td>
+<td><code>str</code></td>
+<td><code>false</code></td>
+<td>Write minimal output.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="block_stat" class="doc_header"><code>block_stat</code><a href="https://github.com/moarshy/immerse/tree/master/immerse/httpapi.py#L214" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>block_stat</code>(<strong><code>coreurl</code></strong>, <strong><code>arg</code></strong>:<code>str</code>)</p>
+</blockquote>
+<p>Print information of a raw IPFS block.</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>coreurl</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+<tr>
+<td><strong><code>arg</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>Bash58 encoded multihash of block(s) to remove</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Build-a-block">Build a block<a class="anchor-link" href="#Build-a-block"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">block_put</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;../README.md&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Key&#34;:&#34;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#34;,&#34;Size&#34;:1179}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Get-stat-on-a-block">Get stat on a block<a class="anchor-link" href="#Get-stat-on-a-block"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">block_stat</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Key&#34;:&#34;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#34;,&#34;Size&#34;:1179}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Get-a-block">Get a block<a class="anchor-link" href="#Get-a-block"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">block_get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;# Welcome to Immerse by Algovera\r\n&gt; A python library by Algovera to interact with IPFS and IPFS ecosystem such as the common pinning services\r\n\r\n\r\n## What is Immerse?\r\n\r\nImmerse is a python library by Algovera to interact with IPFS and IPFS ecosystem such as the common pinning services. It is designed by data scientists for data scientists to interact with the IPFS ecosystem without leaving the comfort of python and jupyter notebook.\r\n\r\nYou can learn more about IPFS [here](https://ipfs.io/#why)\r\n\r\nIPFS is built using the go-lang and javascript. With Immerse, you can interact with IPFS using the exposed [HTTP RPC API](https://docs.ipfs.io/reference/http/api/#getting-started). \r\n\r\nYou will need a local IPFS Node running to use the HTTP API (even when using Immerse). As an alternative, you can connect via the [Infura](https://infura.io/product/ipfs)\&#39;s dedicated IPFS gateway. Immerse provide both ways to interact with IPFS.\r\n\r\n## Installing\r\n\r\nto do: instructions on how to install library goes here\r\n\r\n## How to use\r\n\r\nTo adda file to IPFS, simply\r\n\r\n```python\r\nfrom immerse import httpapi\r\n\r\nurl = get_coreurl()\r\nresponse, json = add_items(url, &#34;path/to/file&#34;)\r\n```\r\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Remove-a-block">Remove a block<a class="anchor-link" href="#Remove-a-block"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">block_rm</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Hash&#34;:&#34;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#34;}\n&#39;</pre>
 </div>
 
 </div>

@@ -23,6 +23,6 @@ To adda file to IPFS, simply
 ```python
 from immerse import httpapi
 
-api = IPFS()
-response, json = api.add("path/to/file")
+url = get_coreurl()
+response, json = add_items(url, "path/to/file")
 ```

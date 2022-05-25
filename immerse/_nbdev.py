@@ -3,13 +3,17 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"get_coreurl": "00_httpapi.ipynb",
-         "add": "00_httpapi.ipynb",
-         "get": "00_httpapi.ipynb",
+         "add_items": "00_httpapi.ipynb",
+         "get_items": "00_httpapi.ipynb",
          "cat": "00_httpapi.ipynb",
          "get_peers": "00_httpapi.ipynb",
          "find_dht_peer": "00_httpapi.ipynb",
          "find_value_provider": "00_httpapi.ipynb",
-         "get_dht_value": "00_httpapi.ipynb"}
+         "get_dht_value": "00_httpapi.ipynb",
+         "block_get": "00_httpapi.ipynb",
+         "block_put": "00_httpapi.ipynb",
+         "block_rm": "00_httpapi.ipynb",
+         "block_stat": "00_httpapi.ipynb"}
 
 modules = ["httpapi.py"]
 

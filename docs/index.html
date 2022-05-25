@@ -69,8 +69,8 @@ nb_path: "nbs\index.ipynb"
 <p>To adda file to IPFS, simply</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">immerse</span> <span class="kn">import</span> <span class="n">httpapi</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">IPFS</span><span class="p">()</span>
-<span class="n">response</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;path/to/file&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">get_coreurl</span><span class="p">()</span>
+<span class="n">response</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">add_items</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;path/to/file&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
