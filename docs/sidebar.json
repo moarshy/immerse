@@ -1,6 +1,7 @@
 {
   "immerse": {
     "Overview": "/",
+    "utils": "utils.html",
     "HTTP API": "httpapi.html"
   }
 }
